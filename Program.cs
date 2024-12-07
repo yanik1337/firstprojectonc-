@@ -1,4 +1,4 @@
-﻿using PlayerClass;
+using PlayerClass;
 
 namespace Casino
 {
@@ -7,25 +7,38 @@ namespace Casino
         static void Main(string[] args)
         {
             Console.WriteLine("Добро пожаловать в шедевроказино!");
-            Console.WriteLine("Выберите команду:");
-            Console.WriteLine("1. Ввести ник");
-            Console.WriteLine("0. Выйти.");
-
+            
             string input = "";
-            input = Console.ReadLine();
-
             Player player = new Player();
 
-            while (input != "0") 
+            player.PlayerNameInsert();
+            Console.WriteLine();
+            player.PlayerMoneyInsert();
+
+            while (input != "0" && !player.IsAccountDeleted)
             {
-                if (input == "1")
+                Console.WriteLine("\nВыберите игру:");
+                Console.WriteLine("1. Игра в кости");
+                Console.WriteLine("0. Выход");
+                input = Console.ReadLine();
+                switch (input)
                 {
-                    player.PlayerNameInsert();
-                    Console.WriteLine();
-                    player.PlayerMoneyInsert();
-                    break;
+                    case "1":
+                        DiceGame diceGame = new DiceGame();
+                        diceGame.Play(player);
+                        break;
+                    case "0":
+                        Console.WriteLine("bb");
+                        break;
+                    default:
+                        Console.WriteLine("Неверный выбор.");
+                        break;
                 }
-                
+                if (player.IsAccountDeleted)
+                {
+                    Console.WriteLine("Вы проиграли, т.к. ваш баланс равен нулю!" +
+                    "\nВАША УЧЕТНАЯ ЗАПИСЬ УДАЛЕНА");
+                }
             }
         }
     }
