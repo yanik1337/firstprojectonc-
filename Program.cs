@@ -1,4 +1,8 @@
 using PlayerClass;
+using System.Numerics;
+using System;
+using RandomGameNameGeneratorClass;
+using System.Dynamic;
 
 namespace Casino
 {
@@ -6,8 +10,9 @@ namespace Casino
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Добро пожаловать в шедевроказино!");
-            
+            RandomGameNameGenerator rndName = new RandomGameNameGenerator();
+            rndName.RandomNameGenerator();
+            Console.WriteLine("");
             string input = "";
             Player player = new Player();
 
@@ -28,16 +33,11 @@ namespace Casino
                         diceGame.Play(player);
                         break;
                     case "0":
-                        Console.WriteLine("bb");
+                        Console.WriteLine("До свиданья!");
                         break;
                     default:
                         Console.WriteLine("Неверный выбор.");
                         break;
-                }
-                if (player.IsAccountDeleted)
-                {
-                    Console.WriteLine("Вы проиграли, т.к. ваш баланс равен нулю!" +
-                    "\nВАША УЧЕТНАЯ ЗАПИСЬ УДАЛЕНА");
                 }
             }
         }
