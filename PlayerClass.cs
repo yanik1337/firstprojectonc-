@@ -10,6 +10,7 @@ namespace PlayerClass
 
         public void PlayerNameInsert()
         {
+            Console.WriteLine();
             Console.WriteLine("Введите ник:");
             PlayerName = Console.ReadLine();
             Console.WriteLine($"Ваш ник: {PlayerName}");
@@ -31,8 +32,10 @@ namespace PlayerClass
         {
             if (Money <= 0 && !IsAccountDeleted)
             {
+                Console.WriteLine();
                 Console.WriteLine("Вы проиграли, т.к. ваш баланс равен нулю!" +
                     "\nВАША УЧЕТНАЯ ЗАПИСЬ УДАЛЕНА");
+                Environment.Exit(0);
             }
         }
     }
