@@ -1,0 +1,27 @@
+using PlayerClass;
+
+namespace FirstProject.GameClasses
+{
+    public class RockPaperScissorsGame
+    {
+        private Random random = new Random();
+        public void Play(Player player)
+        {
+            Console.WriteLine($"\nВаш баланс: {player.Money}$");
+            Console.WriteLine("Сколько вы хотите поставить?");
+
+            if (!int.TryParse(Console.ReadLine(), out int bet))
+            {
+                Console.WriteLine("Некорректная сумма ставки.");
+                return;
+            }
+
+            if (bet <= 0 || bet > player.Money)
+            {
+                Console.WriteLine("Некорректная ставка. Сумма должна быть больше нуля и не превышать ваш баланс.");
+                return;
+            }
+            Console.WriteLine("Чем...");
+        }
+    }
+}
